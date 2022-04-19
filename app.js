@@ -8,17 +8,27 @@ const App = {
         }
     },
     methods: {
-        inputChangeHandler(event) {
-            this.inputValue = event.target.value
-        },
         addNewNote() {
             if (this.inputValue !== '') {
                 this.notes.push(this.inputValue)
                 this.inputValue = ''
             }
         },
+        toUpperCase(item) {
+            return item.toUpperCase()
+        },
         deleteNote(idx) {
             this.notes.splice(idx, 1)
+        }
+    },
+    computed: {
+
+    },
+    watch: {
+        inputValue(value) {
+            if (value.length >= 59) {
+                alert('Заметка слишком длинная')
+            }
         }
     }
 }
